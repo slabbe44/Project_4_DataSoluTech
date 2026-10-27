@@ -1,0 +1,16 @@
+# Données médicales
+data/
+
+# Fichiers temporaires Jupyter
+.ipynb_checkpoints/
+
+# Environnement Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Fichiers de configuration sensibles
+.env
+.env.*
+!.env.example
