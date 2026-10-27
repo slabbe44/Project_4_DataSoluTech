@@ -1,0 +1,12 @@
+# Données et identifiants
+data/
+.env
+.env.*
+
+# Fichiers inutiles dans l'image
+.git/
+.venv/
+__pycache__/
+.ipynb_checkpoints/
+*.ipynb
+reports/

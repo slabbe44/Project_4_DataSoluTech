@@ -1,4 +1,6 @@
 # librairies
+import os
+from dotenv import load_dotenv
 import pandas as pd
 from pathlib import Path
 from pymongo import MongoClient
@@ -63,8 +65,26 @@ for index, ligne in df_clean.iterrows():
 print("Documents créés :", len(docs))
 
 # Connexion à MongoDB
-client = MongoClient("mongodb://localhost:27017/")
+# Chargement des identifiants
+load_dotenv(".env")
+
+# Connexion à MongoDB Docker
+# Paramètres de connexion
+load_dotenv(".env")
+
+host = os.getenv("MONGO_HOST", "localhost")
+port = int(os.getenv("MONGO_PORT", "27018"))
+
+client = MongoClient(
+    host=host,
+    port=port,
+    username=os.getenv("MONGO_ROOT_USER"),
+    password=os.getenv("MONGO_ROOT_PASSWORD"),
+    authSource="admin"
+)
+
 client.admin.command("ping")
+print("Connexion MongoDB réussie !")
 
 # Sélection de la base et de la collection
 db = client["healthcare"]
