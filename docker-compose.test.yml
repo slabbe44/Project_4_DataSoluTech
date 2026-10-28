@@ -1,0 +1,16 @@
+services:
+  mongodb_test:
+    image: mongo:8.0
+
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD}
+      MONGO_ANALYST_PASSWORD: ${MONGO_ANALYST_PASSWORD}
+      MONGO_MIGRATION_PASSWORD: ${MONGO_MIGRATION_PASSWORD}
+
+    volumes:
+      - mongo_test_data:/data/db
+      - ./docker/init_users.js:/docker-entrypoint-initdb.d/init_users.js:ro
+
+volumes:
+  mongo_test_data:
