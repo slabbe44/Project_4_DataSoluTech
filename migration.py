@@ -78,9 +78,9 @@ port = int(os.getenv("MONGO_PORT", "27018"))
 client = MongoClient(
     host=host,
     port=port,
-    username=os.getenv("MONGO_ROOT_USER"),
-    password=os.getenv("MONGO_ROOT_PASSWORD"),
-    authSource="admin"
+    username=os.getenv("MONGO_MIGRATION_USER"),
+    password=os.getenv("MONGO_MIGRATION_PASSWORD"),
+    authSource="healthcare"
 )
 
 client.admin.command("ping")
