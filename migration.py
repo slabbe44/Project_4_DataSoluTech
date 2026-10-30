@@ -128,4 +128,15 @@ if nb_ok and structure_ok:
 else:
     raise ValueError("Échec de la vérification de la migration")
 
+# Création des index MongoDB
+
+collection.create_index("medical.pathologie")
+collection.create_index("hospitalisation.date_admission")
+collection.create_index("hospitalisation.hopital")
+
+print("\n=== Index MongoDB ===")
+
+for index in collection.list_indexes():
+    print(index["name"])
+
 client.close()
