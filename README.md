@@ -22,11 +22,12 @@ Les fichiers sont répartis par fonction afin de distinguer l'analyse, la migrat
 
 ```text
 Project_4/
-├── P4_analyse_dataset_medical.ipynb        # Analyse et contrôles initiaux
-├── P4_conteneurisation_docker.ipynb       # Déploiement Docker et sécurité
+├── P4_analyse_dataset_medical.ipynb      # Analyse et contrôles initiaux
+├── P4_conteneurisation_docker.ipynb      # Déploiement Docker et sécurité
 ├── P4_rapport_analyse_et_schema.md       # Rapport et modèle documentaire
+├── P4_etude_deploiement_AWS.ipynb        # Rapport et modèle documentaire
 ├── migration.py                          # Migration et contrôles automatiques
-├── requirements.txt                     # Dépendances Python et versions
+├── requirements.txt                      # Dépendances Python et versions
 ├── Dockerfile                            # Image du script Python
 ├── docker-compose.yml                    # Services MongoDB et migration
 ├── docker-compose.test.yml               # Environnement de test indépendant
@@ -75,12 +76,12 @@ Cette structure permet de regrouper logiquement les informations liées à une h
 - [x] Migration initiale vers MongoDB
 - [x] Contrôles d'intégrité
 - [x] Définition et test des index MongoDB
-- [ ] Automatisation de la création des index dans `migration.py`
+- [x] Automatisation de la création des index dans `migration.py`
 - [x] Tests CRUD
 - [x] Automatisation du script de migration
 - [x] Conteneurisation avec Docker
 - [x] Authentification et gestion des utilisateurs MongoDB
-- [ ] Étude des solutions AWS
+- [x] Étude des solutions AWS (./P4_etude_deploiement_AWS.ipynb)
 
 
 ## Schéma de la base MongoDB
