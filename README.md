@@ -134,22 +134,13 @@ Trois index ont été définis pour optimiser les recherches :
 | `hospitalisation.hopital` | Rechercher les hospitalisations par établissement |
 
 Ces index peuvent améliorer les performances des requêtes utilisant ces champs. Ils ne sont pas uniques, car plusieurs hospitalisations peuvent partager une même pathologie, une même date ou un même hôpital.
-
-Les index ont été créés lors des essais dans le notebook. **Le script `migration.py` actuel ne les crée pas automatiquement :** il faut les créer sur toute nouvelle instance MongoDB après la migration, avec les commandes indiquées ci-dessous. Cette opération ne modifie pas les documents et peut être relancée si les index existent déjà avec la même définition.
-
-```javascript
-db.hospitalisations.createIndex({ "medical.pathologie": 1 })
-db.hospitalisations.createIndex({ "hospitalisation.date_admission": 1 })
-db.hospitalisations.createIndex({ "hospitalisation.hopital": 1 })
-```
+**Ils sont créés par Le script `migration.py`.**
 
 Pour vérifier leur présence :
 
 ```javascript
 db.hospitalisations.getIndexes()
 ```
-
-Une amélioration prévue consiste à ajouter ces instructions au script de migration afin d'automatiser également l'indexation.
 
 ### Justification du modèle
 
@@ -262,7 +253,7 @@ Cette commande permet de :
 - Importer les documents si la collection est vide.
 - Vérifier le nombre et la structure des documents.
 
-### 6. Créer les index sur une nouvelle base
+### 6. Vérifier les index
 
 Après une première migration sur un volume MongoDB neuf, ouvrir le shell avec le compte administrateur :
 
@@ -274,14 +265,11 @@ Saisir le mot de passe administrateur lorsqu'il est demandé, puis exécuter dan
 
 ```javascript
 use healthcare
-db.hospitalisations.createIndex({ "medical.pathologie": 1 })
-db.hospitalisations.createIndex({ "hospitalisation.date_admission": 1 })
-db.hospitalisations.createIndex({ "hospitalisation.hopital": 1 })
 db.hospitalisations.getIndexes()
 exit
 ```
 
-L'index `_id_` est créé automatiquement par MongoDB. Les trois autres index doivent figurer dans la liste. Cette étape est actuellement **manuelle** et sera automatisée dans une prochaine version du script.
+L'index `_id_` est créé automatiquement par MongoDB. Les trois autres index doivent figurer dans la liste.
 
 ### 7. Vérifier la migration
 
