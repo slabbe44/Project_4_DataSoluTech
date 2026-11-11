@@ -134,7 +134,7 @@ Trois index ont été définis pour optimiser les recherches :
 | `hospitalisation.hopital` | Rechercher les hospitalisations par établissement |
 
 Ces index peuvent améliorer les performances des requêtes utilisant ces champs. Ils ne sont pas uniques, car plusieurs hospitalisations peuvent partager une même pathologie, une même date ou un même hôpital.
-**Ils sont créés par Le script `migration.py`.**
+**Le script `migration.py` crée automatiquement les trois index. »**
 
 Pour vérifier leur présence :
 
